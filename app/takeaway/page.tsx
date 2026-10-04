@@ -2,23 +2,19 @@
 
 import type { FormEvent } from "react";
 import { useMemo, useState } from "react";
-import { takeawayItems } from "@/data/menu";
+import { formatEuro, takeawayItems } from "@/data/menu";
 
-const categories = ["All", "Aperitiefhapjes", "Antipasti", "Pasta", "Secondi"];
+const categories = ["Alles", "Aperitiefhapjes", "Voorgerechten", "Pasta", "Hoofdgerechten"];
 const pickupSlots = ["17:15 – 17:30", "17:30 – 17:45", "17:45 – 18:00", "18:00 – 18:15", "18:15 – 18:30", "18:30 – 18:45"];
 
 type Quantities = Record<string, number>;
 
-function euros(value: number) {
-  return new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }).format(value);
-}
-
 export default function TakeawayPage() {
   const [quantities, setQuantities] = useState<Quantities>({});
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("Alles");
   const [pickupSlot, setPickupSlot] = useState(pickupSlots[2]);
   const [confirmation, setConfirmation] = useState("");
-  const filteredItems = takeawayItems.filter((item) => activeCategory === "All" || item.category === activeCategory);
+  const filteredItems = takeawayItems.filter((item) => activeCategory === "Alles" || item.category === activeCategory);
   const orderedItems = useMemo(
     () => takeawayItems.filter((item) => (quantities[item.id] ?? 0) > 0),
     [quantities],
@@ -38,12 +34,12 @@ export default function TakeawayPage() {
   function submitOrder(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!itemCount) {
-      setConfirmation("Please add at least one dish to your order before continuing.");
+      setConfirmation("Voeg minstens één gerecht toe voordat u verdergaat.");
       return;
     }
     const formData = new FormData(event.currentTarget);
     const name = String(formData.get("name") ?? "").trim();
-    setConfirmation(`Grazie, ${name}! Your order request is ready for the selected pickup slot (${pickupSlot}).`);
+    setConfirmation(`Bedankt, ${name}! Uw bestelverzoek staat klaar voor het gekozen afhaalmoment (${pickupSlot}).`);
     setQuantities({});
     event.currentTarget.reset();
   }
@@ -51,16 +47,16 @@ export default function TakeawayPage() {
   return (
     <main id="main">
       <section className="page-intro takeaway-intro">
-        <p className="eyebrow">La cucina a casa</p>
-        <h1>Trattoria Takeaway</h1>
+        <p className="eyebrow">De keuken bij u thuis</p>
+        <h1>Bestellen om af te halen</h1>
         <p>
-          Takeaway prices are the second prices shown on the official menu.
-          Only dishes with an available takeaway price appear here.
+          De afhaalprijzen zijn de tweede prijzen op de officiële menukaart.
+          Hier staan alleen gerechten met een beschikbare afhaalprijs.
         </p>
       </section>
       <div className="takeaway-layout page-width">
         <div className="takeaway-main">
-          <div className="category-tabs" role="group" aria-label="Filter takeaway menu">
+          <div className="category-tabs" role="group" aria-label="Filter de afhaalmenukaart">
             {categories.map((category) => (
               <button
                 className={`category-tab${activeCategory === category ? " active" : ""}`}
@@ -81,22 +77,22 @@ export default function TakeawayPage() {
                   {item.image && <img src={item.image} alt="" />}
                   <div className="takeaway-card-copy">
                     <div className="takeaway-card-heading">
-                      <h2>{item.name}</h2><strong>{euros(item.takeawayPrice)}</strong>
+                      <h2>{item.name}</h2><strong>{formatEuro(item.takeawayPrice)}</strong>
                     </div>
                     {item.description && <p>{item.description}</p>}
-                    <div className="quantity-control" role="group" aria-label={`${item.name} quantity`}>
+                    <div className="quantity-control" role="group" aria-label={`Aantal ${item.name}`}>
                       <button
                         type="button"
-                        aria-label={`Remove one ${item.name}`}
+                        aria-label={`Eén ${item.name} verwijderen`}
                         disabled={!quantities[item.id]}
                         onClick={() => updateQuantity(item.id, -1)}
                       >−</button>
-                      <output key={quantities[item.id] ?? 0} aria-live="polite" aria-label={`${quantities[item.id] ?? 0} selected`}>
+                      <output key={quantities[item.id] ?? 0} aria-live="polite" aria-label={`${quantities[item.id] ?? 0} geselecteerd`}>
                         {quantities[item.id] ?? 0}
                       </output>
                       <button
                         type="button"
-                        aria-label={`Add one ${item.name}`}
+                        aria-label={`Eén ${item.name} toevoegen`}
                         onClick={() => updateQuantity(item.id, 1)}
                       >+</button>
                     </div>
@@ -104,28 +100,28 @@ export default function TakeawayPage() {
                 </article>
               ))}
             </div>
-          ) : <p className="empty-category">No takeaway dishes are listed in this category.</p>}
+          ) : <p className="empty-category">Er staan geen afhaalgerechten in deze categorie.</p>}
 
           <form className="pickup-form panel" id="pickup-form" onSubmit={submitOrder} data-motion="reveal">
             <div className="form-heading">
-              <h2>Your Details &amp; Pickup Window</h2>
-              <p>Enter your details below to schedule your fresh box pickup.</p>
+              <h2>Uw gegevens &amp; afhaaltijd</h2>
+              <p>Vul uw gegevens in om uw afhaalmoment te kiezen.</p>
             </div>
             <div className="form-grid">
               <label>
-                Full name
-                <input name="name" autoComplete="name" placeholder="Your name" required />
+                Volledige naam
+                <input name="name" autoComplete="name" placeholder="Uw naam" required />
               </label>
               <label>
-                Phone number
+                Telefoonnummer
                 <input name="phone" type="tel" autoComplete="tel" placeholder="+32 499 41 03 75" required />
               </label>
               <label className="form-wide">
-                Email address
-                <input name="email" type="email" autoComplete="email" placeholder="you@example.com" required />
+                E-mailadres
+                <input name="email" type="email" autoComplete="email" placeholder="naam@voorbeeld.be" required />
               </label>
               <fieldset className="pickup-slot-field form-wide">
-                <legend>Select pickup time slot (today)</legend>
+                <legend>Kies een afhaalmoment (vandaag)</legend>
                 <div className="pickup-slots">
                   {pickupSlots.map((slot) => (
                     <button
@@ -144,30 +140,30 @@ export default function TakeawayPage() {
 
         <aside className="takeaway-aside">
           <section className="order-summary panel" aria-labelledby="order-heading" data-motion="reveal">
-            <h2 id="order-heading">Your Order</h2>
+            <h2 id="order-heading">Uw bestelling</h2>
             {orderedItems.length ? (
               <ul className="order-items">
                 {orderedItems.map((item) => (
                   <li key={item.id}>
                     <span><strong>{quantities[item.id]} × {item.name}</strong></span>
-                    <span>{euros(item.takeawayPrice * quantities[item.id])}</span>
+                    <span>{formatEuro(item.takeawayPrice * quantities[item.id])}</span>
                   </li>
                 ))}
               </ul>
-            ) : <p className="cart-empty">Your basket is empty. Add a dish to begin.</p>}
+            ) : <p className="cart-empty">Uw mandje is leeg. Voeg een gerecht toe om te beginnen.</p>}
             <div className="order-totals" aria-live="polite">
-              <p><span>Subtotal</span><span>{euros(subtotal)}</span></p>
-              <p className="order-total"><strong>Total price</strong><strong>{euros(total)}</strong></p>
+              <p><span>Subtotaal</span><span>{formatEuro(subtotal)}</span></p>
+              <p className="order-total"><strong>Totaal</strong><strong>{formatEuro(total)}</strong></p>
             </div>
             <button className="button button-primary order-submit" type="submit" form="pickup-form" disabled={!itemCount}>
-              Continue to pickup details
+              Verder naar uw afhaaltijd
             </button>
-            <p className="payment-note">Your total uses the official takeaway prices shown in the menu.</p>
+            <p className="payment-note">Het totaal is berekend met de officiële afhaalprijzen op de menukaart.</p>
           </section>
           <div className="dine-in-card" data-motion="reveal">
-            <h2>Looking to Dine In with us?</h2>
-            <p>Table reservations are accepted by phone only to ensure our hosts curate the most hospitable family dining experience for you.</p>
-            <a href="tel:+32499410375">Reserve a table <span>+32 499 41 03 75</span></a>
+            <h2>Liever bij ons dineren?</h2>
+            <p>Reserveren kan telefonisch. We helpen u graag bij het plannen van uw bezoek.</p>
+            <a href="tel:+32499410375">Reserveer een tafel <span>+32 499 41 03 75</span></a>
           </div>
         </aside>
 
