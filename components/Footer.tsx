@@ -29,6 +29,12 @@ export default function Footer() {
       </div>
       <div className="footer-bottom page-width">
         <p>© 2026 La Nonna Cucina Mediterranea. Alle rechten voorbehouden.</p>
+        <p className="footer-credit">
+          Mogelijk gemaakt door{" "}
+          <a href="https://www.lyttledevelopment.com/" target="_blank" rel="noreferrer">
+            Lyttle Development
+          </a>
+        </p>
         <div className="social-links" aria-label="Sociale media">
           <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
           <a href="https://www.pinterest.com/" target="_blank" rel="noreferrer">Pinterest</a>

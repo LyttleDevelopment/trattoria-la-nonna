@@ -1,6 +1,12 @@
 import Link from "next/link";
+import UnderConstruction from "@/components/UnderConstruction";
+import { SITE_NOTICE } from "@/data/site-config";
 
 export default function NotFound() {
+  if (SITE_NOTICE) {
+    return <UnderConstruction noticeType={SITE_NOTICE} />;
+  }
+
   return (
     <main id="main">
       <section className="page-intro">
