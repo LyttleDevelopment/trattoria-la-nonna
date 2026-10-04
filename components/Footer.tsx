@@ -9,27 +9,33 @@ export default function Footer() {
             La Nonna <span>Cucina</span>
           </Link>
           <p>
-            An authentic celebration of Mediterranean warmth and timeless
-            Italian trattoria heritage. Hand-rolled pasta, cold-pressed oils,
-            harvested memories.
+            Een ode aan mediterrane warmte en de tijdloze traditie van de
+            Italiaanse trattoria. Handgemaakte pasta, koudgeperste olijfolie
+            en herinneringen om te koesteren.
           </p>
         </div>
         <div className="footer-block">
-          <h2>Hours</h2>
-          <p>Thursday – Sunday</p>
+          <h2>Openingstijden</h2>
+          <p>Donderdag – zondag</p>
           <p>12:00 – 15:00, 18:30 – 23:00</p>
-          <p className="muted">Monday – Wednesday: Closed</p>
+          <p className="muted">Maandag – woensdag: gesloten</p>
         </div>
         <div className="footer-block">
-          <h2>Visit &amp; say hello</h2>
+          <h2>Bezoek ons</h2>
           <p>Opperstraat 18, 9180 Lokeren</p>
           <p><a href="tel:+32499410375">+32 499 41 03 75</a></p>
           <p><a href="mailto:info@trattorialanonna.be">info@trattorialanonna.be</a></p>
         </div>
       </div>
       <div className="footer-bottom page-width">
-        <p>© 2026 La Nonna Cucina Mediterranea. All rights reserved.</p>
-        <div className="social-links" aria-label="Social media">
+        <p>© 2026 La Nonna Cucina Mediterranea. Alle rechten voorbehouden.</p>
+        <p className="footer-credit">
+          Mogelijk gemaakt door{" "}
+          <a href="https://www.lyttledevelopment.com/" target="_blank" rel="noreferrer">
+            Lyttle Development
+          </a>
+        </p>
+        <div className="social-links" aria-label="Sociale media">
           <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
           <a href="https://www.pinterest.com/" target="_blank" rel="noreferrer">Pinterest</a>
           <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a>

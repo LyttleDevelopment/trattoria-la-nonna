@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const links = [
-  { href: "/", label: "Our Story" },
-  { href: "/menu", label: "Menu" },
-  { href: "/takeaway", label: "Takeaway Order" },
+  { href: "/", label: "Ons verhaal" },
+  { href: "/menu", label: "Menukaart" },
+  { href: "/takeaway", label: "Afhalen" },
 ];
 
 export default function Header() {
@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <Link className="brand" href="/" aria-label="La Nonna Cucina home" onClick={() => setMenuOpen(false)}>
+        <Link className="brand" href="/" aria-label="La Nonna Cucina startpagina" onClick={() => setMenuOpen(false)}>
           <Image className="brand-logo" src="/logo.svg" alt="" width={78} height={78} priority />
         </Link>
         <button
@@ -28,7 +28,7 @@ export default function Header() {
           aria-controls="primary-navigation"
           onClick={() => setMenuOpen((open) => !open)}
         >
-          <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
+          <span className="sr-only">{menuOpen ? "Menu sluiten" : "Menu openen"}</span>
           <span className={`menu-icon${menuOpen ? " is-open" : ""}`} aria-hidden="true">
             <span />
             <span />
@@ -37,7 +37,7 @@ export default function Header() {
         <nav
           className={`primary-navigation${menuOpen ? " is-open" : ""}`}
           id="primary-navigation"
-          aria-label="Main navigation"
+          aria-label="Hoofdnavigatie"
         >
           {links.map((link) => (
             <Link
@@ -50,7 +50,7 @@ export default function Header() {
             </Link>
           ))}
           <a className="nav-reserve" href="tel:+32499410375">
-            Reserve a table
+            Reserveer een tafel
           </a>
         </nav>
       </div>

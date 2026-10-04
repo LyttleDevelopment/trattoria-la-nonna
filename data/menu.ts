@@ -22,7 +22,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "pane-olio",
         name: "Pane & olio",
-        description: "Freshly baked bread, extra virgin olive oil and balsamic vinegar.",
+        description: "Versgebakken brood, extra vierge olijfolie en balsamico.",
         dineInPrice: 4.5,
         takeawayPrice: 3.5,
         category: "Aperitiefhapjes",
@@ -31,7 +31,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "focaccia-casa",
         name: "Focaccia della casa",
-        description: "Warm focaccia, olive oil, sea salt, rosemary and ricotta.",
+        description: "Warme focaccia, olijfolie, zeezout, rozemarijn en ricotta.",
         dineInPrice: 9.5,
         takeawayPrice: 7.5,
         category: "Aperitiefhapjes",
@@ -40,7 +40,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "brushetta-classico",
         name: "Brushetta classico",
-        description: "Tomato, basil, garlic and extra virgin olive oil.",
+        description: "Tomaat, basilicum, knoflook en extra vierge olijfolie.",
         dineInPrice: 9.5,
         takeawayPrice: 7.5,
         category: "Aperitiefhapjes",
@@ -49,7 +49,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "antipasto-della-nonna",
         name: "Antipasto Della Nonna",
-        description: "Prosciutto, mortadella, saltufo, olives and cheeses.",
+        description: "Prosciutto, mortadella, bresaola?, saltufo, olijven en kazen.",
         dineInPrice: 24,
         takeawayPrice: 22,
         category: "Aperitiefhapjes",
@@ -57,42 +57,42 @@ export const menuSections: MenuSection[] = [
     ],
   },
   {
-    name: "Antipasti – voorgerechten",
+    name: "Voorgerechten",
     items: [
       {
         id: "burrata-pugliese",
         name: "Burrata pugliese",
-        description: "Burrata, roasted cherry tomatoes, basil oil, pistachios and focaccia.",
+        description: "Burrata, geroosterde kerstomaten, basilicumolie, pistachenoten en focaccia.",
         dineInPrice: 15.5,
         takeawayPrice: 13.5,
-        category: "Antipasti",
+        category: "Voorgerechten",
         image: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=480&q=85",
       },
       {
         id: "vitello-tonnato",
         name: "Vitello Tonnato",
-        description: "Thinly sliced veal, tuna cream, caper berries and arugula.",
+        description: "Dun gesneden kalfsvlees, tonijncrème, kapperappeltjes en rucola.",
         dineInPrice: 16.5,
         takeawayPrice: 14.5,
-        category: "Antipasti",
+        category: "Voorgerechten",
         image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=480&q=85",
       },
       {
         id: "carpaccio-di-manzo",
         name: "Carpaccio di manzo",
-        description: "Beef carpaccio, parmesan, arugula, pine nuts and balsamic.",
+        description: "Rundscarpaccio, parmezaan, rucola, pijnboompitten en balsamico.",
         dineInPrice: 17.5,
         takeawayPrice: 15.5,
-        category: "Antipasti",
+        category: "Voorgerechten",
         image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=480&q=85",
       },
       {
         id: "arancini-siciliani",
         name: "Arancini siciliani",
-        description: "Crispy risotto balls, warm tomato sauce, parmesan and basil.",
+        description: "Krokante risottoballetjes, warme tomatensaus, parmezaan en basilicum.",
         dineInPrice: 14.5,
         takeawayPrice: 12.5,
-        category: "Antipasti",
+        category: "Voorgerechten",
         image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b7?auto=format&fit=crop&w=480&q=85",
       },
     ],
@@ -103,7 +103,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "spaghetti-bolognese",
         name: "Spaghetti alla bolognese",
-        description: "Homemade ragù and parmesan.",
+        description: "Huisgemaakte ragù en parmezaan.",
         dineInPrice: 18.5,
         takeawayPrice: 16.5,
         category: "Pasta",
@@ -112,7 +112,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "spaghetti-vongole",
         name: "Spaghetti alla vongole",
-        description: "Clams, garlic, white wine, parsley and chili.",
+        description: "Venusschelpen, knoflook, witte wijn, peterselie en chili.",
         dineInPrice: 22.5,
         takeawayPrice: 20.5,
         category: "Pasta",
@@ -121,7 +121,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "linguini-frutti-di-mare",
         name: "Linguini frutti di mare",
-        description: "Mussels, clams, scampi, squid, tomato and white wine.",
+        description: "Mosselen, venusschelpen, scampi, inktvis, tomaat en witte wijn.",
         dineInPrice: 23.5,
         takeawayPrice: 21.5,
         category: "Pasta",
@@ -130,7 +130,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "cacio-e-pepe",
         name: "Cacio é pepe",
-        description: "Pecorino Romano and black pepper.",
+        description: "Pecorino Romano en zwarte peper.",
         dineInPrice: 17.5,
         takeawayPrice: 15.5,
         category: "Pasta",
@@ -139,7 +139,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "pasta-salmone",
         name: "Pasta al salmone",
-        description: "Smoked salmon, cream, lemon and dill.",
+        description: "Gerookte zalm, room, citroen en dille.",
         dineInPrice: 20.5,
         takeawayPrice: 18.5,
         category: "Pasta",
@@ -148,7 +148,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "spaghetti-carbonara",
         name: "Spaghetti alla carbonara",
-        description: "Guanciale, pecorino Romano, egg and black pepper.",
+        description: "Guanciale, pecorino Romano, ei en zwarte peper.",
         dineInPrice: 19.5,
         takeawayPrice: 17.5,
         category: "Pasta",
@@ -157,7 +157,7 @@ export const menuSections: MenuSection[] = [
       {
         id: "rigatone-tartufo",
         name: "Rigatone al tartufo",
-        description: "Rigatoni, truffle cream, mushrooms and parmesan.",
+        description: "Rigatoni, truffelroom, champignons en parmezaan.",
         dineInPrice: 21.5,
         takeawayPrice: 19.5,
         category: "Pasta",
@@ -182,87 +182,87 @@ export const menuSections: MenuSection[] = [
     ],
   },
   {
-    name: "Secondi – hoofdgerechten",
-    note: "Main courses can be served with bread, fries, (saffron) risotto or roasted baby potatoes. Extra portion €3.50.",
+    name: "Hoofdgerechten",
+    note: "Alle hoofdgerechten kunnen worden geserveerd met brood, frietjes, (saffraan)risotto of geroosterde krieltjes. Extra portie €3,50.",
     items: [
       {
         id: "tagliata-di-manzo",
         name: "Tagliata di manzo",
-        description: "Grilled entrecôte, arugula, parmesan, balsamic, roasted cherry tomatoes and baby potatoes.",
+        description: "Gegrilde entrecote, rucola, parmezaan, balsamico, geroosterde kerstomaten en krieltjes.",
         dineInPrice: 29.5,
         takeawayRestricted: true,
-        category: "Secondi",
+        category: "Hoofdgerechten",
       },
       {
         id: "pollo-alla-milanese",
         name: "Pollo alla milanese",
-        description: "Crispy breaded chicken, lemon, arugula, parmesan and saffron rice.",
+        description: "Krokant gepaneerde kip, citroen, rucola, parmezaan en saffraanrijst.",
         dineInPrice: 22.5,
         takeawayRestricted: true,
-        category: "Secondi",
+        category: "Hoofdgerechten",
       },
       {
         id: "saltimbocca-alla-romana",
         name: "Saltimbocca alla romana",
-        description: "Veal, prosciutto, sage, white wine, roasted potatoes and cherry tomatoes.",
+        description: "Kalfsvlees, prosciutto, salie, witte wijn, geroosterde aardappelen en kerstomaten.",
         dineInPrice: 24.5,
         takeawayRestricted: true,
-        category: "Secondi",
+        category: "Hoofdgerechten",
       },
       {
         id: "branzino-mediterranea",
         name: "Branzino alla mediterranea",
-        description: "Sea bass, olives, capers, lemon, roasted baby potatoes and cherry tomatoes.",
+        description: "Zeebaars, olijven, kappertjes, citroen, geroosterde krieltjes en kerstomaatjes.",
         dineInPrice: 27.5,
         takeawayRestricted: true,
-        category: "Secondi",
+        category: "Hoofdgerechten",
       },
       {
         id: "ossocuco-alla-milanese",
         name: "Ossocuco alla milanese",
-        description: "Slow-cooked veal shank, gremolata and saffron risotto.",
+        description: "Langzaam gegaarde kalfsschenkel, gremolata en saffraanrisotto.",
         dineInPrice: 26.5,
         takeawayPrice: 24.5,
-        category: "Secondi",
+        category: "Hoofdgerechten",
         image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=480&q=85",
       },
     ],
   },
   {
-    name: "Desserts – Dolci",
+    name: "Desserts",
     items: [
       {
         id: "tiramisu-della-nonna",
         name: "Tiramisu Della Nonna",
         dineInPrice: 8,
-        category: "Dolci",
+        category: "Desserts",
       },
       {
         id: "panna-cotta-amarena",
         name: "Panna cotta all’amarena",
         dineInPrice: 7.5,
-        category: "Dolci",
+        category: "Desserts",
       },
       {
         id: "cannoli-siciliani",
         name: "Cannoli siciliani",
         dineInPrice: 7.5,
-        category: "Dolci",
+        category: "Desserts",
       },
       {
         id: "limone-ripieno",
         name: "Limone ripieno – Gevulde citroen",
         dineInPrice: 6.5,
         takeawayRestricted: true,
-        category: "Dolci",
+        category: "Desserts",
       },
       {
         id: "affogato",
         name: "Affogato",
-        description: "Vanilla ice cream and espresso.",
+        description: "Vanille-ijs + espresso.",
         dineInPrice: 6.5,
         takeawayRestricted: true,
-        category: "Dolci",
+        category: "Desserts",
       },
     ],
   },
@@ -270,7 +270,7 @@ export const menuSections: MenuSection[] = [
 
 export const drinkSections = [
   {
-    name: "Aperitivi",
+    name: "Aperitieven",
     items: [
       { id: "prosecco", name: "Prosecco", price: 9 },
       { id: "picon-vin-blanc", name: "Picon vin blanc", price: 8 },
@@ -280,7 +280,7 @@ export const drinkSections = [
       { id: "negroni", name: "Negroni", price: 11 },
       { id: "americano", name: "Americano", price: 10 },
       { id: "martini", name: "Martini bianco/rosso", price: 7.5 },
-      { id: "alcohol-free-cocktail", name: "Alcohol-free cocktail: spritz or mojito", price: 7 },
+      { id: "alcohol-free-cocktail", name: "Alcoholvrije cocktail: spritz of mojito", price: 7 },
     ],
   },
   {
@@ -304,7 +304,7 @@ export const drinkSections = [
   },
   {
     name: "Wijnen",
-    note: "To be discussed.",
+    note: "Nog te bespreken…",
     items: [],
   },
   {
@@ -314,7 +314,7 @@ export const drinkSections = [
       { id: "koffie-deca", name: "Koffie/deca", price: 3.5 },
       { id: "cappuccino", name: "Cappuccino", price: 4.5 },
       { id: "latte-macchiato", name: "Latte Macchiato", price: 6.5 },
-      { id: "italian-coffee", name: "Italian coffee", price: 9.5 },
+      { id: "italian-coffee", name: "Italiaanse koffie", price: 9.5 },
     ],
   },
   {
@@ -337,3 +337,7 @@ export const takeawayItems: TakeawayMenuItem[] = menuSections
     (item): item is TakeawayMenuItem =>
       item.takeawayPrice !== undefined && item.takeawayRestricted !== true,
   );
+
+export function formatEuro(value: number) {
+  return new Intl.NumberFormat("nl-BE", { style: "currency", currency: "EUR" }).format(value);
+}

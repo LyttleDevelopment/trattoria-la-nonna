@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { drinkSections, menuSections } from "@/data/menu";
+import { drinkSections, formatEuro, menuSections } from "@/data/menu";
 
 export const metadata: Metadata = {
-  title: "Menu",
-  description: "Food and drinks menu at La Nonna Cucina.",
+  title: "Menukaart",
+  description: "De menukaart met gerechten en dranken van La Nonna Cucina.",
 };
 
 export default function MenuPage() {
   return (
     <main id="main">
       <section className="page-intro menu-intro">
-        <p className="eyebrow">La cucina</p>
-        <h1>Our Menu</h1>
-        <p>Food, desserts and drinks at La Nonna.</p>
+        <p className="eyebrow">De keuken</p>
+        <h1>Onze menukaart</h1>
+        <p>Gerechten, desserts en dranken bij La Nonna.</p>
       </section>
       <div className="menu-page-content page-width">
       <p className="menu-price-note">
-        Prices are shown for dining in. Takeaway prices are listed where available.
-        Highlighted dishes are not available for takeaway.
+        De prijzen gelden voor consumptie ter plaatse. Afhaalprijzen staan erbij
+        waar ze beschikbaar zijn. Gemarkeerde gerechten zijn niet af te halen.
       </p>
       {menuSections.map((section) => (
         <section className="menu-section" key={section.name} aria-labelledby={`menu-${section.name}`} data-motion="reveal">
@@ -28,11 +28,11 @@ export default function MenuPage() {
                   <div className="menu-card-title">
                     <h3>{item.name}</h3>
                     <div className="menu-prices">
-                      <span>€{item.dineInPrice.toFixed(2)}</span>
+                      <span>{formatEuro(item.dineInPrice)}</span>
                       {item.takeawayPrice !== undefined && (
-                        <small>Takeaway €{item.takeawayPrice.toFixed(2)}</small>
+                        <small>Afhalen {formatEuro(item.takeawayPrice)}</small>
                       )}
-                      {item.takeawayRestricted && <small className="restricted-note">Dine-in only</small>}
+                      {item.takeawayRestricted && <small className="restricted-note">Niet af te halen</small>}
                     </div>
                   </div>
                   {item.description && <p>{item.description}</p>}
@@ -44,8 +44,8 @@ export default function MenuPage() {
         ))}
       </div>
       <div className="menu-page-content page-width drinks-content">
-        <p className="eyebrow">La carta</p>
-        <h2 className="drinks-heading">Drinks</h2>
+        <p className="eyebrow">De drankenkaart</p>
+        <h2 className="drinks-heading">Dranken</h2>
         {drinkSections.map((section) => (
           <section className="menu-section" key={section.name} aria-labelledby={`drinks-${section.name}`} data-motion="reveal">
             <h2 id={`drinks-${section.name}`}>{section.name}</h2>
@@ -56,7 +56,7 @@ export default function MenuPage() {
                   <article className="menu-card drink-card" key={item.id} data-motion="reveal">
                     <div className="menu-card-title">
                       <h3>{item.name}</h3>
-                      <span>€{item.price.toFixed(2)}</span>
+                      <span>{formatEuro(item.price)}</span>
                     </div>
                   </article>
                 ))}
