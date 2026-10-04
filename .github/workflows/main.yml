@@ -22,10 +22,10 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build API Docker image
+      - name: Build Next.js Docker image
         run: docker build --network=host -t ghcr.io/lyttledevelopment/trattoria-la-nonna:main -f Dockerfile .
 
-      - name: Push API Docker image to GitHub Container Registry
+      - name: Push Next.js Docker image to GitHub Container Registry
         run: docker push ghcr.io/lyttledevelopment/trattoria-la-nonna:main
 
   trigger-portainer-webhook:
