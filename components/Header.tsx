@@ -60,11 +60,11 @@ export default function Header() {
           )}
           {LIGHTSPEED_RESERVATION_URL ? (
             <a className="nav-reserve" href={LIGHTSPEED_RESERVATION_URL} target="_blank" rel="noreferrer">
-              Reserveer via Lightspeed <span className="external-link-icon" aria-hidden="true">↗</span>
+              Reserveer een tafel <span className="external-link-icon" aria-hidden="true">↗</span>
             </a>
           ) : (
             <span className="nav-reserve" aria-disabled="true">
-              Reserveer via Lightspeed <span className="external-link-icon" aria-hidden="true">↗</span>
+              Reserveer een tafel <span className="external-link-icon" aria-hidden="true">↗</span>
             </span>
           )}
         </nav>

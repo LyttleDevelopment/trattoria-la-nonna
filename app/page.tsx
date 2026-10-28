@@ -129,19 +129,18 @@ export default function HomePage() {
           <p className="eyebrow">Aan tafel</p>
           <h2>Schuif aan onze tafel</h2>
           <p>
-            Reserveren verloopt via de Lightspeed-reservatiemodule. Online
-            reserveren is binnenkort beschikbaar.
+            Online reserveren is binnenkort beschikbaar.
           </p>
           <p className="reservation-note">
-            Zodra de module actief is, kunt u hier rechtstreeks uw tafel reserveren.
+            Zodra de reserveringsmodule actief is, kunt u hier rechtstreeks uw tafel reserveren.
           </p>
           {LIGHTSPEED_RESERVATION_URL ? (
             <a className="button button-primary" href={LIGHTSPEED_RESERVATION_URL} target="_blank" rel="noreferrer">
-              Reserveer via Lightspeed <span className="external-link-icon" aria-hidden="true">↗</span>
+              Reserveer een tafel <span className="external-link-icon" aria-hidden="true">↗</span>
             </a>
           ) : (
             <button className="button button-primary" type="button" disabled>
-              Reserveer via Lightspeed <span className="external-link-icon" aria-hidden="true">↗</span>
+              Reserveer een tafel <span className="external-link-icon" aria-hidden="true">↗</span>
             </button>
           )}
         </div>
