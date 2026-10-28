@@ -16,8 +16,8 @@ export default function Footer() {
         </div>
         <div className="footer-block">
           <h2>Openingstijden</h2>
-          <p>Donderdag – zondag</p>
-          <p>12:00 – 15:00, 18:30 – 23:00</p>
+          <p>Donderdag en zondag: 11:00 – 21:00</p>
+          <p>Vrijdag en zaterdag: 11:00 – 22:00</p>
           <p className="muted">Maandag – woensdag: gesloten</p>
         </div>
         <div className="footer-block">

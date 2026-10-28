@@ -68,7 +68,7 @@ export default function HomePage() {
           </div>
           <dl className="hero-details">
             <div><dt>Locatie</dt><dd>Opperstraat 18A, 9180 Moerbeke (Lokeren)</dd></div>
-            <div><dt>Open</dt><dd>Do–zo, 12:00–23:00</dd></div>
+            <div><dt>Open</dt><dd>Do &amp; zo 11:00–21:00, vr &amp; za 11:00–22:00</dd></div>
           </dl>
         </div>
         <div className="hero-image-wrap">
