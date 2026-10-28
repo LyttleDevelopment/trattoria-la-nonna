@@ -16,14 +16,14 @@ export default function Footer() {
         </div>
         <div className="footer-block">
           <h2>Openingstijden</h2>
-          <p>Donderdag – zondag</p>
-          <p>12:00 – 15:00, 18:30 – 23:00</p>
+          <p>Donderdag en zondag: 11:00 – 21:00</p>
+          <p>Vrijdag en zaterdag: 11:00 – 22:00</p>
           <p className="muted">Maandag – woensdag: gesloten</p>
         </div>
         <div className="footer-block">
           <h2>Bezoek ons</h2>
-          <p>Opperstraat 18, 9180 Lokeren</p>
-          <p><a href="tel:+32499410375">+32 499 41 03 75</a></p>
+          <p>Opperstraat 18A, 9180 Moerbeke (Lokeren)</p>
+          <p><a href="tel:+32499410375">04 99 41 03 75</a></p>
           <p><a href="mailto:info@trattorialanonna.be">info@trattorialanonna.be</a></p>
         </div>
       </div>

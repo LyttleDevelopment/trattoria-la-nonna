@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { formatEuro, menuSections } from "@/data/menu";
+import { LIGHTSPEED_RESERVATION_URL } from "@/data/site-config";
 
 const gallery = [
   {
@@ -32,25 +33,41 @@ export default function HomePage() {
     <main id="main">
       <section className="hero page-width">
         <div className="hero-copy">
-          <p className="eyebrow">Een stukje Italië in Lokeren</p>
+          <p className="eyebrow">Een stukje Italië in Moerbeke (Lokeren)</p>
           <h1>
-            Warmte, traditie,
-            <br />&amp; pure
-            <br /><em>mediterrane ziel.</em>
+            Welkom bij La Nonna
           </h1>
-          <p className="hero-description">
-            Aan de Opperstraat in Lokeren brengt La Nonna de sfeer van een
-            rustieke Italiaanse familietafel tot leven. We eren recepten van
-            generatie op generatie met koudgeperste olijfolie, handgemaakte
-            pasta en vers geoogste kruiden van de kust.
-          </p>
+          <div className="hero-description">
+            <p>
+              La Nonna is de verwezenlijking van een grote droom en vooral van een
+              passie die al lange tijd in ons leeft: de liefde voor lekker eten,
+              gezellig samen zijn en tafelen met tijd voor elkaar.
+            </p>
+            <p>
+              De naam La Nonna draagt voor mij ook een heel bijzondere betekenis.
+              Het is een liefdevolle herinnering aan mijn grootmoeder Marcella.
+              Niet omdat zij bekendstond om haar kookkunsten, maar om wie ze was:
+              een ontzettend zorgzame vrouw, bij wie je je altijd welkom en
+              geborgen voelde. ❤️
+            </p>
+            <p>
+              Dat gevoel willen we meenemen naar La Nonna. Een plek waar je niet
+              zomaar komt eten, maar waar je je welkom voelt, waar aandacht is
+              voor elkaar en waar gezelligheid minstens zo belangrijk is als wat
+              er op je bord ligt.
+            </p>
+            <p>
+              Met La Nonna willen we een klein stukje van dat warme oma-gevoel
+              doorgeven aan iedereen die bij ons binnenstapt.
+            </p>
+            <p>Liefs Jolein &amp; Geoffry</p>
+          </div>
           <div className="button-row">
             <Link className="button button-primary" href="/menu">Bekijk onze menukaart</Link>
-            <a className="button button-outline" href="#our-story">Ons verhaal</a>
           </div>
           <dl className="hero-details">
-            <div><dt>Locatie</dt><dd>Opperstraat 18, 9180 Lokeren</dd></div>
-            <div><dt>Open</dt><dd>Do–zo, 12:00–23:00</dd></div>
+            <div><dt>Locatie</dt><dd>Opperstraat 18A, 9180 Moerbeke (Lokeren)</dd></div>
+            <div><dt>Open</dt><dd>Donderdag en zondag: 11:00–21:00; vrijdag en zaterdag: 11:00–22:00</dd></div>
           </dl>
         </div>
         <div className="hero-image-wrap">
@@ -60,44 +77,6 @@ export default function HomePage() {
             alt="Een pastagerecht aan een zonnige tafel in de trattoria"
           />
           <span className="image-caption">Met aandacht bereid. Met liefde gedeeld.</span>
-        </div>
-      </section>
-
-      <section className="story-section page-width" id="our-story" data-motion="reveal">
-        <div className="story-images">
-          <img
-            src="https://images.unsplash.com/photo-1556761223-4c4282c73f77?auto=format&fit=crop&w=900&q=85"
-            alt="Vers pastadeeg dat met de hand wordt gekneed"
-          />
-          <div className="story-image-pair">
-            <img
-              src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=700&q=85"
-              alt="Goudgele olijfolie van de familieboomgaard"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1518843875459-f738682238a6?auto=format&fit=crop&w=700&q=85"
-              alt="Door de zon gerijpte mediterrane olijven"
-            />
-          </div>
-        </div>
-        <div className="story-copy">
-          <p className="eyebrow">Ons erfgoed</p>
-          <h2>Geboren uit steen, aarde en zee</h2>
-          <p>
-            Elk gerecht bij La Nonna draagt de erfenis van Beatrice “Nonna”
-            Moretti, die in haar jeugd olijven oogstte in Puglia en haar
-            kleinkinderen het ritme van de seizoenen leerde.
-          </p>
-          <p>
-            Onze olijfolie komt uitsluitend van haar familieboerderij. We
-            selecteren traditionele datterini-tomaten met de hand en halen dagelijks
-            verse vis en zeevruchten bij lokale vissers.
-          </p>
-          <div className="story-stats">
-            <div><strong>100%</strong><span>Koudgeperste olie</span></div>
-            <div><strong>Geen</strong><span>Bewerkte granen</span></div>
-            <div><strong>Dagelijks</strong><span>Verse pasta</span></div>
-          </div>
         </div>
       </section>
 
@@ -150,14 +129,20 @@ export default function HomePage() {
           <p className="eyebrow">Aan tafel</p>
           <h2>Schuif aan onze tafel</h2>
           <p>
-            Omdat we onder onze stenen bogen een beperkt aantal plaatsen
-            hebben, raden we aan om 2 à 3 weken vooraf te reserveren. Neem voor
-            gezelschappen van meer dan acht personen rechtstreeks contact met ons op.
+            Online reserveren is binnenkort beschikbaar.
           </p>
           <p className="reservation-note">
-            Reserveren kan telefonisch. Bel ons, dan houden we een plaatsje voor u vrij.
+            Zodra de reserveringsmodule actief is, kunt u hier rechtstreeks uw tafel reserveren.
           </p>
-          <a className="button button-primary" href="tel:+32499410375">Bel +32 499 41 03 75</a>
+          {LIGHTSPEED_RESERVATION_URL ? (
+            <a className="button button-primary" href={LIGHTSPEED_RESERVATION_URL} target="_blank" rel="noreferrer">
+              Reserveer een tafel <span className="external-link-icon" aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <button className="button button-primary" type="button" disabled>
+              Reserveer een tafel <span className="external-link-icon" aria-hidden="true">↗</span>
+            </button>
+          )}
         </div>
         <img
           src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=85"
