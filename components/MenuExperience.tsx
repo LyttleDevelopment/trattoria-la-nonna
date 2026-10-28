@@ -433,20 +433,22 @@ export default function MenuExperience() {
                         onClick={() => setIsListOpen(false)}
                     />
                 )}
-                <button
-                    ref={shortlistToggleRef}
-                    className={`shortlist-toggle${isListOpen ? ' is-modal-open' : ''}`}
-                    type="button"
-                    onClick={() => setIsListOpen((open) => !open)}
-                    aria-expanded={isListOpen}
-                    aria-controls="shortlist-panel"
-                >
-                    <span aria-hidden="true">♡</span>
-                    <span>{isListOpen ? 'Sluit mijn lijstje' : 'Mijn lijstje'}</span>
-                    <span className="shortlist-count">{itemCount}</span>
-                    {!isListOpen && itemCount > 0 && <span
-                      className="shortlist-toggle-total">{formatEuro(estimatedTotal)}</span>}
-                </button>
+                {!isListOpen && (
+                    <button
+                        ref={shortlistToggleRef}
+                        className="shortlist-toggle"
+                        type="button"
+                        onClick={() => setIsListOpen(true)}
+                        aria-expanded={false}
+                        aria-controls="shortlist-panel"
+                    >
+                        <span aria-hidden="true">♡</span>
+                        <span>Mijn lijstje</span>
+                        <span className="shortlist-count">{itemCount}</span>
+                        {itemCount > 0 && <span
+                          className="shortlist-toggle-total">{formatEuro(estimatedTotal)}</span>}
+                    </button>
+                )}
             </>,
             document.body,
         )}

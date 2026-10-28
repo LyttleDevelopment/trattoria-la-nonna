@@ -952,10 +952,6 @@ h2 {
   font-weight: 650;
 }
 
-.shortlist-toggle.is-modal-open {
-  z-index: 12;
-}
-
 .shortlist-toggle > span:first-child {
   font-size: 1.2rem;
 }
