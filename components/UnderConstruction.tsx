@@ -35,7 +35,7 @@ export default function UnderConstruction({ noticeType }: { noticeType: SiteNoti
         <h1 id="maintenance-title">{content.title}</h1>
         <p className="maintenance-copy">{content.copy}</p>
         <address className="maintenance-contact">
-          <a href="tel:+32499410375">+32 499 41 03 75</a>
+          <a href="tel:+32499410375">04 99 41 03 75</a>
           <a href="mailto:info@trattorialanonna.be">info@trattorialanonna.be</a>
           <span>Opperstraat 18A, 9180 Moerbeke (Lokeren)</span>
         </address>

@@ -849,6 +849,216 @@ h2 {
   box-shadow: 0 10px 22px rgba(73, 61, 35, 0.08);
 }
 
+.menu-card-picked {
+  border-color: var(--olive);
+  background: var(--white);
+}
+
+.shortlist-intro {
+  margin: 1.4rem auto 0 !important;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(191, 138, 67, 0.55);
+  border-radius: 3px;
+  background: var(--white);
+  color: var(--olive-dark) !important;
+  font-size: 0.82rem !important;
+}
+
+.shortlist-control {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.shortlist-close {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--olive);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--olive-dark);
+  cursor: pointer;
+}
+
+.menu-card-interactive {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.menu-card-interactive:active {
+  background: var(--white);
+}
+
+.quantity-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.quantity-control button {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--olive);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--olive-dark);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.quantity-control button:hover {
+  background: var(--olive);
+  color: var(--white);
+}
+
+.quantity-value {
+  min-width: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.shortlist-empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.shortlist-toggle {
+  position: fixed;
+  z-index: 15;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--olive-dark);
+  border-radius: 999px;
+  background: var(--olive-dark);
+  box-shadow: 0 8px 26px rgba(54, 49, 28, 0.24);
+  color: var(--white);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.shortlist-toggle > span:first-child {
+  font-size: 1.2rem;
+}
+
+.shortlist-count {
+  display: grid;
+  width: 1.6rem;
+  height: 1.6rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--olive-dark);
+  font-size: 0.72rem;
+}
+
+.shortlist-toggle-total {
+  padding-left: 0.65rem;
+  border-left: 1px solid rgba(255, 254, 250, 0.45);
+  font-family: var(--serif);
+}
+
+.shortlist-panel {
+  position: fixed;
+  z-index: 14;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 4.2rem);
+  width: min(100% - 2rem, 420px);
+  max-height: min(70svh, 620px);
+  overflow: auto;
+  padding: 1.25rem;
+  border: 1px solid rgba(191, 138, 67, 0.8);
+  border-radius: 5px;
+  background: var(--white);
+  box-shadow: 0 12px 40px rgba(54, 49, 28, 0.2);
+}
+
+.shortlist-panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.shortlist-panel-heading .eyebrow {
+  margin-bottom: 0.2rem;
+}
+
+.shortlist-panel-heading h2 {
+  margin-bottom: 0.8rem;
+  font-size: 1.65rem;
+}
+
+.shortlist-close {
+  width: 44px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.shortlist-items {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shortlist-items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(191, 138, 67, 0.32);
+  font-size: 0.82rem;
+}
+
+.shortlist-item-name small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.shortlist-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.9rem;
+  font-size: 0.9rem;
+}
+
+.shortlist-disclaimer {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.shortlist-clear {
+  margin-top: 0.75rem;
+  padding: 0.35rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--rust);
+  cursor: pointer;
+  font-size: 0.74rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .menu-card-title h3 {
   font-size: 1.15rem;
 }
@@ -873,6 +1083,11 @@ h2 {
   font-size: 0.62rem;
   line-height: 1.35;
   white-space: nowrap;
+}
+
+.menu-prices .menu-selected-quantity {
+  color: var(--olive-dark);
+  font-weight: 700;
 }
 
 .menu-prices .restricted-note {
@@ -1537,6 +1752,10 @@ h2 {
 }
 
 @media (max-width: 680px) {
+  .shortlist-control {
+    display: none;
+  }
+
   html {
     scroll-padding-top: 5rem;
   }
