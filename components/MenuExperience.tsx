@@ -391,10 +391,10 @@ export default function MenuExperience() {
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    {selectedItems.length === 0 ? (
-                        <p className="shortlist-empty">Je lijstje is nog leeg. Tik op een gerecht om het toe te voegen.</p>
-                    ) : (
-                        <>
+                    <div className="shortlist-content">
+                        {selectedItems.length === 0 ? (
+                            <p className="shortlist-empty">Je lijstje is nog leeg. Tik op een gerecht om het toe te voegen.</p>
+                        ) : (
                             <ul className="shortlist-items">
                                 {selectedItems.map((item) => (
                                     <li key={item.id}>
@@ -406,6 +406,10 @@ export default function MenuExperience() {
                                     </li>
                                 ))}
                             </ul>
+                        )}
+                    </div>
+                    {selectedItems.length > 0 && (
+                        <div className="shortlist-footer">
                             <div className="shortlist-total">
                                 <span>Richtprijs</span>
                                 <strong>{formatEuro(estimatedTotal)}</strong>
@@ -417,7 +421,7 @@ export default function MenuExperience() {
                                     onClick={() => setQuantities({})}>
                                 Lijstje leegmaken
                             </button>
-                        </>
+                        </div>
                     )}
                 </aside>
                 {isListOpen && (
@@ -431,7 +435,7 @@ export default function MenuExperience() {
                 )}
                 <button
                     ref={shortlistToggleRef}
-                    className="shortlist-toggle"
+                    className={`shortlist-toggle${isListOpen ? ' is-modal-open' : ''}`}
                     type="button"
                     onClick={() => setIsListOpen((open) => !open)}
                     aria-expanded={isListOpen}
