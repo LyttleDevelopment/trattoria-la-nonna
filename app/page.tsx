@@ -64,7 +64,6 @@ export default function HomePage() {
           </div>
           <div className="button-row">
             <Link className="button button-primary" href="/menu">Bekijk onze menukaart</Link>
-            <Link className="button button-outline" href="/takeaway">Bestellen om af te halen</Link>
           </div>
           <dl className="hero-details">
             <div><dt>Locatie</dt><dd>Opperstraat 18A, 9180 Moerbeke (Lokeren)</dd></div>
@@ -138,11 +137,11 @@ export default function HomePage() {
           </p>
           {LIGHTSPEED_RESERVATION_URL ? (
             <a className="button button-primary" href={LIGHTSPEED_RESERVATION_URL} target="_blank" rel="noreferrer">
-              Reserveer via Lightspeed
+              Reserveer via Lightspeed <span className="external-link-icon" aria-hidden="true">↗</span>
             </a>
           ) : (
             <button className="button button-primary" type="button" disabled>
-              Reserveren binnenkort beschikbaar
+              Reserveer via Lightspeed <span className="external-link-icon" aria-hidden="true">↗</span>
             </button>
           )}
         </div>

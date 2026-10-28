@@ -16,8 +16,8 @@ export default function MenuPage() {
       </section>
       <div className="menu-page-content page-width">
       <p className="menu-price-note">
-        De prijzen gelden voor consumptie ter plaatse. Bekijk de afhaalprijzen op
-        onze bestelpagina.
+        De prijzen gelden voor consumptie ter plaatse. Afhaalbestellingen verlopen
+        via Lightspeed.
       </p>
       {menuSections.map((section) => (
         <section className="menu-section" key={section.name} aria-labelledby={`menu-${section.name}`} data-motion="reveal">
