@@ -22,7 +22,7 @@ export default function Footer() {
         </div>
         <div className="footer-block">
           <h2>Bezoek ons</h2>
-          <p>Opperstraat 18, 9180 Lokeren</p>
+          <p>Opperstraat 18A, 9180 Moerbeke (Lokeren)</p>
           <p><a href="tel:+32499410375">+32 499 41 03 75</a></p>
           <p><a href="mailto:info@trattorialanonna.be">info@trattorialanonna.be</a></p>
         </div>

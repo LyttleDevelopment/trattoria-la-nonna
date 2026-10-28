@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { LIGHTSPEED_RESERVATION_URL } from "@/data/site-config";
 
 const links = [
   { href: "/", label: "Ons verhaal" },
@@ -49,9 +50,13 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <a className="nav-reserve" href="tel:+32499410375">
-            Reserveer een tafel
-          </a>
+          {LIGHTSPEED_RESERVATION_URL ? (
+            <a className="nav-reserve" href={LIGHTSPEED_RESERVATION_URL} target="_blank" rel="noreferrer">
+              Reserveer via Lightspeed
+            </a>
+          ) : (
+            <span className="nav-reserve" aria-disabled="true">Reserveren binnenkort</span>
+          )}
         </nav>
       </div>
     </header>

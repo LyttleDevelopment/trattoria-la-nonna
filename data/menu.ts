@@ -137,9 +137,9 @@ export const menuSections: MenuSection[] = [
         image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=480&q=85",
       },
       {
-        id: "pasta-salmone",
-        name: "Pasta al salmone",
-        description: "Gerookte zalm, room, citroen en dille.",
+        id: "aglio-e-olio-scampi",
+        name: "Aglio e olio scampi",
+        description: "Scampi, chilipeper, knoflook en peterselie.",
         dineInPrice: 20.5,
         takeawayPrice: 18.5,
         category: "Pasta",

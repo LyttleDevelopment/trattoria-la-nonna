@@ -4,3 +4,6 @@ export type SiteNotice = "grand-opening" | "maintenance";
 export const SITE_NOTICE: SiteNotice | null = null;
 // export const SITE_NOTICE: SiteNotice | null = "maintenance";
 // export const SITE_NOTICE: SiteNotice | null = "grand-opening";
+
+export const LIGHTSPEED_RESERVATION_URL: string | null = null;
+export const LIGHTSPEED_ORDER_URL: string | null = null;

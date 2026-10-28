@@ -253,10 +253,20 @@ input {
   transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
-.primary-navigation .nav-reserve:hover {
+.primary-navigation a.nav-reserve:hover {
   transform: translateY(-2px);
   background: var(--olive);
   color: var(--white);
+}
+
+.primary-navigation .nav-reserve[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
 }
 
 .nav-toggle {
@@ -1449,6 +1459,15 @@ h2 {
   font-family: var(--serif);
   font-size: 1.1rem;
   text-transform: none;
+}
+
+.dine-in-card .reservation-disabled {
+  display: inline-block;
+  color: #d3aa63;
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .order-confirmation {
