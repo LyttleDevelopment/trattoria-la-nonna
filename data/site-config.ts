@@ -9,4 +9,4 @@ export const LIGHTSPEED_RESERVATION_URL: string | null = null;
 export const LIGHTSPEED_ORDER_URL: string | null = null;
 
 // Set to false to hide the personal dine-in shortlist from the menu.
-export const ENABLE_DINE_IN_SHORTLIST = true;
+export const ENABLE_DINE_IN_SHORTLIST = false;

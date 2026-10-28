@@ -49,11 +49,13 @@ function MenuCard({
                       item,
                       quantity,
                       onChangeQuantity,
+                      shortlistEnabled,
                       isDrink = false,
                   }: {
     item: ShortlistItem;
     quantity: number;
     onChangeQuantity: (id: string, quantity: number) => void;
+    shortlistEnabled: boolean;
     isDrink?: boolean;
 }) {
     const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -76,7 +78,7 @@ function MenuCard({
     }
 
     function startHold(event: ReactPointerEvent<HTMLElement>) {
-        if (!ENABLE_DINE_IN_SHORTLIST || event.button !== 0 || isQuantityControl(event.target)) return;
+        if (!shortlistEnabled || event.button !== 0 || isQuantityControl(event.target)) return;
         handledLongPress.current = false;
         clearHoldTimer();
         holdTimer.current = setTimeout(() => {
@@ -94,12 +96,12 @@ function MenuCard({
     }
 
     function handleCardClick(event: ReactMouseEvent<HTMLElement>) {
-        if (!ENABLE_DINE_IN_SHORTLIST || isQuantityControl(event.target)) return;
+        if (!shortlistEnabled || isQuantityControl(event.target)) return;
         addOne();
     }
 
     function handleCardKeyDown(event: ReactKeyboardEvent<HTMLElement>) {
-        if (!ENABLE_DINE_IN_SHORTLIST) return;
+        if (!shortlistEnabled) return;
         if (event.target !== event.currentTarget) return;
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
@@ -109,18 +111,18 @@ function MenuCard({
 
     return (
         <article
-            className={`menu-card${ENABLE_DINE_IN_SHORTLIST ? ' menu-card-interactive' : ''}${quantity > 0 ? ' menu-card-picked' : ''}${isDrink ? ' drink-card' : ''}`}
+            className={`menu-card${shortlistEnabled ? ' menu-card-interactive' : ''}${quantity > 0 ? ' menu-card-picked' : ''}${isDrink ? ' drink-card' : ''}`}
             data-motion="reveal"
-            role={ENABLE_DINE_IN_SHORTLIST ? 'group' : undefined}
-            tabIndex={ENABLE_DINE_IN_SHORTLIST ? 0 : undefined}
-            aria-label={ENABLE_DINE_IN_SHORTLIST ? `${item.name}: ${quantity} gekozen. Tik om één toe te voegen; houd ingedrukt om één te verwijderen.` : undefined}
-            onPointerDown={ENABLE_DINE_IN_SHORTLIST ? startHold : undefined}
-            onPointerUp={ENABLE_DINE_IN_SHORTLIST ? clearHoldTimer : undefined}
-            onPointerLeave={ENABLE_DINE_IN_SHORTLIST ? cancelHold : undefined}
-            onPointerCancel={ENABLE_DINE_IN_SHORTLIST ? cancelHold : undefined}
-            onContextMenu={ENABLE_DINE_IN_SHORTLIST ? (event) => event.preventDefault() : undefined}
-            onClick={ENABLE_DINE_IN_SHORTLIST ? handleCardClick : undefined}
-            onKeyDown={ENABLE_DINE_IN_SHORTLIST ? handleCardKeyDown : undefined}
+            role={shortlistEnabled ? 'group' : undefined}
+            tabIndex={shortlistEnabled ? 0 : undefined}
+            aria-label={shortlistEnabled ? `${item.name}: ${quantity} gekozen. Tik om één toe te voegen; houd ingedrukt om één te verwijderen.` : undefined}
+            onPointerDown={shortlistEnabled ? startHold : undefined}
+            onPointerUp={shortlistEnabled ? clearHoldTimer : undefined}
+            onPointerLeave={shortlistEnabled ? cancelHold : undefined}
+            onPointerCancel={shortlistEnabled ? cancelHold : undefined}
+            onContextMenu={shortlistEnabled ? (event) => event.preventDefault() : undefined}
+            onClick={shortlistEnabled ? handleCardClick : undefined}
+            onKeyDown={shortlistEnabled ? handleCardKeyDown : undefined}
         >
             <div className="menu-card-title">
                 <h3>{item.name}</h3>
@@ -135,7 +137,7 @@ function MenuCard({
                 </div>
             </div>
             {item.description && <p>{item.description}</p>}
-            {ENABLE_DINE_IN_SHORTLIST && (
+            {shortlistEnabled && (
                 <div className="shortlist-control">
                     <div className="quantity-control" onClick={(event) => event.stopPropagation()}>
                         <button
@@ -165,6 +167,9 @@ export default function MenuExperience() {
     const [isReady, setIsReady] = useState(false);
     const [isListOpen, setIsListOpen] = useState(false);
     const [portalReady, setPortalReady] = useState(false);
+    const [isMobileLayout, setIsMobileLayout] = useState(false);
+    const [isDesktopModeOn, setIsDesktopModeOn] = useState(false);
+    const shortlistEnabled = ENABLE_DINE_IN_SHORTLIST && (isMobileLayout || isDesktopModeOn);
     const shortlistPanelRef = useRef<HTMLElement>(null);
     const shortlistCloseRef = useRef<HTMLButtonElement>(null);
     const shortlistToggleRef = useRef<HTMLButtonElement>(null);
@@ -174,7 +179,19 @@ export default function MenuExperience() {
     }, []);
 
     useEffect(() => {
-        if (!isListOpen) return;
+        const mobileQuery = window.matchMedia('(max-width: 680px)');
+        const updateLayout = () => setIsMobileLayout(mobileQuery.matches);
+        updateLayout();
+        mobileQuery.addEventListener('change', updateLayout);
+        return () => mobileQuery.removeEventListener('change', updateLayout);
+    }, []);
+
+    useEffect(() => {
+        if (!shortlistEnabled) setIsListOpen(false);
+    }, [shortlistEnabled]);
+
+    useEffect(() => {
+        if (!isListOpen || !shortlistEnabled) return;
 
         const scrollY = window.scrollY;
         const bodyStyle = document.body.style;
@@ -234,7 +251,7 @@ export default function MenuExperience() {
             window.scrollTo(0, scrollY);
             shortlistToggleRef.current?.focus();
         };
-    }, [isListOpen]);
+    }, [isListOpen, shortlistEnabled]);
 
     useEffect(() => {
         try {
@@ -301,14 +318,30 @@ export default function MenuExperience() {
                 <h1>Onze menukaart</h1>
                 <p>Gerechten, desserts en dranken bij La Nonna.</p>
                 {ENABLE_DINE_IN_SHORTLIST && (
-                    <p className="shortlist-intro">
-                        <span className="shortlist-desktop-help">
-                            Klik op een gerecht om één toe te voegen. Pas het aantal aan met − en +.
-                        </span>
-                        <span className="shortlist-touch-help">
-                            Tik op een gerecht om één toe te voegen; houd ingedrukt om één te verwijderen.
-                        </span>
-                    </p>
+                    <div className="shortlist-guidance">
+                        <p className="shortlist-intro">
+                            {isMobileLayout
+                                ? 'Tik op een gerecht om één toe te voegen; houd ingedrukt om één te verwijderen.'
+                                : isDesktopModeOn
+                                  ? 'Klik op een gerecht om één toe te voegen. Pas het aantal aan met − en +.'
+                                  : 'Zet Snel kiezen aan om gerechten aan je lijstje toe te voegen.'}
+                        </p>
+                        {!isMobileLayout && (
+                            <button
+                                className="shortlist-mode-switch"
+                                type="button"
+                                role="switch"
+                                aria-checked={isDesktopModeOn}
+                                onClick={() => setIsDesktopModeOn((enabled) => !enabled)}
+                            >
+                                <span>Snel kiezen</span>
+                                <span>{isDesktopModeOn ? 'Aan' : 'Uit'}</span>
+                                <span className="shortlist-switch-track" aria-hidden="true">
+                                    <span />
+                                </span>
+                            </button>
+                        )}
+                    </div>
                 )}
             </section>
             <div className="menu-page-content page-width">
@@ -329,8 +362,9 @@ export default function MenuExperience() {
                                         price: item.dineInPrice,
                                         takeawayRestricted: item.takeawayRestricted,
                                     }}
-                                    quantity={quantities[item.id] ?? 0}
+                                    quantity={shortlistEnabled ? quantities[item.id] ?? 0 : 0}
                                     onChangeQuantity={changeQuantity}
+                                    shortlistEnabled={shortlistEnabled}
                                 />
                             ))}
                         </div>
@@ -360,8 +394,9 @@ export default function MenuExperience() {
                                             category: section.name,
                                             price: item.price
                                         }}
-                                        quantity={quantities[item.id] ?? 0}
+                                        quantity={shortlistEnabled ? quantities[item.id] ?? 0 : 0}
                                         onChangeQuantity={changeQuantity}
+                                        shortlistEnabled={shortlistEnabled}
                                         isDrink
                                     />
                                 ))}
@@ -371,7 +406,7 @@ export default function MenuExperience() {
                 ))}
             </div>
         </main>
-        {ENABLE_DINE_IN_SHORTLIST && portalReady && createPortal(
+        {shortlistEnabled && portalReady && createPortal(
             <>
                 <aside
                     id="shortlist-panel"
