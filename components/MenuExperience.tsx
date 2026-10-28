@@ -125,8 +125,10 @@ function MenuCard({
             <div className="menu-card-title">
                 <h3>{item.name}</h3>
                 <div className="menu-prices">
-                    {quantity > 0 && <small className="menu-selected-quantity" aria-hidden="true">{quantity}× gekozen</small>}
-                    <span>{formatEuro(item.price)}</span>
+                    <span className="menu-price-line">
+                        {quantity > 0 && <small className="menu-selected-quantity" aria-hidden="true">{quantity}× gekozen</small>}
+                        <span>{formatEuro(item.price)}</span>
+                    </span>
                     {item.takeawayRestricted &&
                       <small className="restricted-note">Niet af te
                         halen</small>}
@@ -163,10 +165,74 @@ export default function MenuExperience() {
     const [isReady, setIsReady] = useState(false);
     const [isListOpen, setIsListOpen] = useState(false);
     const [portalReady, setPortalReady] = useState(false);
+    const shortlistPanelRef = useRef<HTMLElement>(null);
+    const shortlistCloseRef = useRef<HTMLButtonElement>(null);
+    const shortlistToggleRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
         setPortalReady(true);
     }, []);
+
+    useEffect(() => {
+        if (!isListOpen) return;
+
+        const scrollY = window.scrollY;
+        const bodyStyle = document.body.style;
+        const rootStyle = document.documentElement.style;
+        const originalBodyStyles = {
+            position: bodyStyle.position,
+            top: bodyStyle.top,
+            left: bodyStyle.left,
+            right: bodyStyle.right,
+            width: bodyStyle.width,
+            overflow: bodyStyle.overflow,
+            paddingRight: bodyStyle.paddingRight,
+        };
+        const originalRootOverflow = rootStyle.overflow;
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+        bodyStyle.position = 'fixed';
+        bodyStyle.top = `-${scrollY}px`;
+        bodyStyle.left = '0';
+        bodyStyle.right = '0';
+        bodyStyle.width = '100%';
+        bodyStyle.overflow = 'hidden';
+        if (scrollbarWidth > 0) bodyStyle.paddingRight = `${scrollbarWidth}px`;
+        rootStyle.overflow = 'hidden';
+        shortlistCloseRef.current?.focus();
+
+        function handleDialogKeyDown(event: KeyboardEvent) {
+            if (event.key === 'Escape') {
+                setIsListOpen(false);
+                return;
+            }
+            if (event.key !== 'Tab') return;
+
+            const focusableElements = shortlistPanelRef.current?.querySelectorAll<HTMLElement>(
+                'button:not(:disabled), [href], input:not(:disabled), [tabindex]:not([tabindex="-1"])',
+            );
+            if (!focusableElements?.length) return;
+
+            const first = focusableElements[0];
+            const last = focusableElements[focusableElements.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        }
+
+        document.addEventListener('keydown', handleDialogKeyDown);
+        return () => {
+            document.removeEventListener('keydown', handleDialogKeyDown);
+            Object.assign(bodyStyle, originalBodyStyles);
+            rootStyle.overflow = originalRootOverflow;
+            window.scrollTo(0, scrollY);
+            shortlistToggleRef.current?.focus();
+        };
+    }, [isListOpen]);
 
     useEffect(() => {
         try {
@@ -308,7 +374,10 @@ export default function MenuExperience() {
                 <aside
                     id="shortlist-panel"
                     className="shortlist-panel"
+                    ref={shortlistPanelRef}
                     aria-labelledby="shortlist-title"
+                    role="dialog"
+                    aria-modal="true"
                     hidden={!isListOpen}
                 >
                     <div className="shortlist-panel-heading">
@@ -316,7 +385,7 @@ export default function MenuExperience() {
                             <p className="eyebrow">Jouw keuzes</p>
                             <h2 id="shortlist-title">Mijn lijstje</h2>
                         </div>
-                        <button className="shortlist-close" type="button"
+                        <button ref={shortlistCloseRef} className="shortlist-close" type="button"
                                 onClick={() => setIsListOpen(false)}
                                 aria-label="Lijstje sluiten">
                             <span aria-hidden="true">×</span>
@@ -351,7 +420,17 @@ export default function MenuExperience() {
                         </>
                     )}
                 </aside>
+                {isListOpen && (
+                    <button
+                        className="shortlist-backdrop"
+                        type="button"
+                        tabIndex={-1}
+                        aria-label="Lijstje sluiten"
+                        onClick={() => setIsListOpen(false)}
+                    />
+                )}
                 <button
+                    ref={shortlistToggleRef}
                     className="shortlist-toggle"
                     type="button"
                     onClick={() => setIsListOpen((open) => !open)}
