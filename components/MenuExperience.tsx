@@ -199,6 +199,7 @@ export default function MenuExperience() {
         bodyStyle.overflow = 'hidden';
         if (scrollbarWidth > 0) bodyStyle.paddingRight = `${scrollbarWidth}px`;
         rootStyle.overflow = 'hidden';
+        document.body.classList.add('shortlist-modal-open');
         shortlistCloseRef.current?.focus();
 
         function handleDialogKeyDown(event: KeyboardEvent) {
@@ -229,6 +230,7 @@ export default function MenuExperience() {
             document.removeEventListener('keydown', handleDialogKeyDown);
             Object.assign(bodyStyle, originalBodyStyles);
             rootStyle.overflow = originalRootOverflow;
+            document.body.classList.remove('shortlist-modal-open');
             window.scrollTo(0, scrollY);
             shortlistToggleRef.current?.focus();
         };
