@@ -300,7 +300,12 @@ export default function MenuExperience() {
                 <p>Gerechten, desserts en dranken bij La Nonna.</p>
                 {ENABLE_DINE_IN_SHORTLIST && (
                     <p className="shortlist-intro">
-                        Tik op een gerecht om één toe te voegen; houd ingedrukt om één te verwijderen. Op computer kun je ook de + en − gebruiken.
+                        <span className="shortlist-desktop-help">
+                            Klik op een gerecht om één toe te voegen. Pas het aantal aan met − en +.
+                        </span>
+                        <span className="shortlist-touch-help">
+                            Tik op een gerecht om één toe te voegen; houd ingedrukt om één te verwijderen.
+                        </span>
                     </p>
                 )}
             </section>

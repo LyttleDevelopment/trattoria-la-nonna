@@ -864,6 +864,10 @@ h2 {
   font-size: 0.82rem !important;
 }
 
+.shortlist-touch-help {
+  display: none;
+}
+
 .shortlist-control {
   display: flex;
   align-items: center;
@@ -1798,6 +1802,14 @@ h2 {
 }
 
 @media (max-width: 680px) {
+  .shortlist-desktop-help {
+    display: none;
+  }
+
+  .shortlist-touch-help {
+    display: inline;
+  }
+
   .shortlist-control {
     display: none;
   }
