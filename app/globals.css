@@ -1001,17 +1001,15 @@ h2 {
 .shortlist-backdrop {
   position: fixed;
   z-index: 13;
-  inset: 0;
+  top: calc(88px + max(1rem, env(safe-area-inset-top)));
+  right: 0;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
   padding: 0;
   border: 0;
   background: rgba(35, 32, 21, 0.38);
   cursor: default;
-}
-
-.shortlist-modal-open .site-header {
-  pointer-events: none;
 }
 
 .shortlist-panel-heading {
@@ -1807,7 +1805,15 @@ h2 {
 
 @media (max-width: 680px) {
   .shortlist-panel {
-    top: calc(68px + max(1rem, env(safe-area-inset-top)));
+    top: max(1rem, env(safe-area-inset-top));
+  }
+
+  .shortlist-backdrop {
+    top: 0;
+  }
+
+  .shortlist-modal-open .site-header {
+    display: none;
   }
 
   .shortlist-desktop-help {
