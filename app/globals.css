@@ -990,6 +990,10 @@ h2 {
   box-shadow: 0 12px 40px rgba(54, 49, 28, 0.2);
 }
 
+.shortlist-panel[hidden] {
+  display: none;
+}
+
 .shortlist-backdrop {
   position: fixed;
   z-index: 13;
