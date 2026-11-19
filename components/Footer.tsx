@@ -36,9 +36,8 @@ export default function Footer() {
           </a>
         </p>
         <div className="social-links" aria-label="Sociale media">
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-          <a href="https://www.pinterest.com/" target="_blank" rel="noreferrer">Pinterest</a>
-          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="https://www.instagram.com/lanonna_moerbeke?fqnt=NWl5bXBjNW9sMG8=" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/share/14xfFd6rMRL/" target="_blank" rel="noreferrer">Facebook</a>
         </div>
       </div>
     </footer>
