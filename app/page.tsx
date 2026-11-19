@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { formatEuro, menuSections } from "@/data/menu";
-import { LIGHTSPEED_RESERVATION_URL, RESERVATIONS_ENABLED } from "@/data/site-config";
+import {
+  HIDE_DISABLED_ACTIONS,
+  LIGHTSPEED_RESERVATION_URL,
+  RESERVATIONS_ENABLED,
+} from "@/data/site-config";
 
 const gallery = [
   {
@@ -26,7 +30,7 @@ const gallery = [
 ];
 
 export default function HomePage() {
-  const featuredIds = new Set(["burrata-pugliese", "spaghetti-carbonara", "ossocuco-alla-milanese", "tiramisu-della-nonna"]);
+  const featuredIds = new Set(["burrata-pugliese", "spaghetti-carbonara", "ossobuco-alla-milanese", "tiramisu-della-nonna"]);
   const highlights = menuSections.flatMap((section) => section.items).filter((item) => featuredIds.has(item.id));
 
   return (
@@ -135,11 +139,11 @@ export default function HomePage() {
             <a className="button button-primary" href={LIGHTSPEED_RESERVATION_URL} target="_blank" rel="noreferrer">
               Reserveer een tafel <span className="external-link-icon" aria-hidden="true">↗</span>
             </a>
-          ) : (
+          ) : !HIDE_DISABLED_ACTIONS ? (
             <button className="button button-primary" type="button" disabled>
               Reserveer een tafel <span className="external-link-icon" aria-hidden="true">↗</span>
             </button>
-          )}
+          ) : null}
         </div>
         <img
           src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=85"
