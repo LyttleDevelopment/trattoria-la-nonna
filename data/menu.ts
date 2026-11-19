@@ -272,7 +272,7 @@ export const drinkSections = [
   {
     name: "Aperitieven",
     items: [
-      { id: "prosecco", name: "Prosecco", price: 9 },
+      { id: "prosecco", name: "Prosecco", price: 9, priceUnit: "glas" },
       { id: "picon-vin-blanc", name: "Picon vin blanc", price: 8 },
       { id: "aperol-spritz", name: "Aperol spritz", price: 9 },
       { id: "limoncello-spritz", name: "Limoncello spritz", price: 9 },
