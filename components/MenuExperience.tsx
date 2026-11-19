@@ -19,11 +19,9 @@ type ShortlistItem = {
     category: string;
     price: number;
     priceUnit?: string;
-    takeawayPrice?: number;
     additionalPrice?: number;
     additionalPriceUnit?: string;
     description?: string;
-    takeawayRestricted?: boolean;
 };
 
 const menuItems: ShortlistItem[] = menuSections.flatMap((section) =>
@@ -34,7 +32,6 @@ const menuItems: ShortlistItem[] = menuSections.flatMap((section) =>
         price: item.dineInPrice,
         priceUnit: item.priceUnit,
         description: item.description,
-        takeawayRestricted: item.takeawayRestricted,
     })),
 );
 
@@ -139,7 +136,6 @@ function MenuCard({
                         {quantity > 0 && <small className="menu-selected-quantity" aria-hidden="true">{quantity}× gekozen</small>}
                         <span>
                             {formatEuro(item.price)}{item.priceUnit && `/${item.priceUnit}`}
-                            {item.takeawayPrice !== undefined && ` / ${formatEuro(item.takeawayPrice)}`}
                             {item.additionalPrice !== undefined && ` / ${formatEuro(item.additionalPrice)}${item.additionalPriceUnit && `/${item.additionalPriceUnit}`}`}
                         </span>
                     </span>
@@ -370,8 +366,6 @@ export default function MenuExperience() {
                                         category: section.name,
                                         price: item.dineInPrice,
                                         priceUnit: item.priceUnit,
-                                        takeawayPrice: item.takeawayPrice,
-                                        takeawayRestricted: item.takeawayRestricted,
                                     }}
                                     quantity={shortlistEnabled ? quantities[item.id] ?? 0 : 0}
                                     onChangeQuantity={changeQuantity}
