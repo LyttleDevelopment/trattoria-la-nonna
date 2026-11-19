@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { formatEuro, menuSections } from "@/data/menu";
-import { LIGHTSPEED_RESERVATION_URL } from "@/data/site-config";
+import { LIGHTSPEED_RESERVATION_URL, RESERVATIONS_ENABLED } from "@/data/site-config";
 
 const gallery = [
   {
@@ -129,12 +129,9 @@ export default function HomePage() {
           <p className="eyebrow">Aan tafel</p>
           <h2>Schuif aan onze tafel</h2>
           <p>
-            Online reserveren is binnenkort beschikbaar.
+            Reserveer eenvoudig online via Lightspeed.
           </p>
-          <p className="reservation-note">
-            Zodra de reserveringsmodule actief is, kunt u hier rechtstreeks uw tafel reserveren.
-          </p>
-          {LIGHTSPEED_RESERVATION_URL ? (
+          {RESERVATIONS_ENABLED ? (
             <a className="button button-primary" href={LIGHTSPEED_RESERVATION_URL} target="_blank" rel="noreferrer">
               Reserveer een tafel <span className="external-link-icon" aria-hidden="true">↗</span>
             </a>
