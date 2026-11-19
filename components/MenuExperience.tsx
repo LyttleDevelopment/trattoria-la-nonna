@@ -143,9 +143,6 @@ function MenuCard({
                             {item.additionalPrice !== undefined && ` / ${formatEuro(item.additionalPrice)}${item.additionalPriceUnit && `/${item.additionalPriceUnit}`}`}
                         </span>
                     </span>
-                    {item.takeawayRestricted &&
-                      <small className="restricted-note">Niet af te
-                        halen</small>}
                 </div>
             </div>
             {item.description && <p>{item.description}</p>}

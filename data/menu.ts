@@ -265,7 +265,7 @@ export const menuSections: MenuSection[] = [
   },
   {
     name: "Desserts",
-    note: "Take-awayprijzen staan als tweede vermeld. Gerechten met ‘Niet af te halen’ zijn niet beschikbaar voor take-away.",
+    note: "Take-awayprijzen staan als tweede vermeld.",
     items: [
       {
         id: "tiramisu-della-nonna",
