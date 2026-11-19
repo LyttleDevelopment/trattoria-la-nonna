@@ -136,7 +136,7 @@ function MenuCard({
                         {quantity > 0 && <small className="menu-selected-quantity" aria-hidden="true">{quantity}× gekozen</small>}
                         <span>
                             {formatEuro(item.price)}{item.priceUnit && `/${item.priceUnit}`}
-                            {item.additionalPrice !== undefined && ` / ${formatEuro(item.additionalPrice)}${item.additionalPriceUnit && `/${item.additionalPriceUnit}`}`}
+                            {item.additionalPrice !== undefined && ` of ${formatEuro(item.additionalPrice)}${item.additionalPriceUnit && `/${item.additionalPriceUnit}`}`}
                         </span>
                     </span>
                 </div>
