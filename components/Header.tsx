@@ -4,7 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { LIGHTSPEED_ORDER_URL, LIGHTSPEED_RESERVATION_URL } from "@/data/site-config";
+import {
+  LIGHTSPEED_ORDER_URL,
+  LIGHTSPEED_RESERVATION_URL,
+  HIDE_DISABLED_ACTIONS,
+  RESERVATIONS_ENABLED,
+  TAKEAWAY_ENABLED,
+} from "@/data/site-config";
 
 const links = [
   { href: "/", label: "Ons verhaal" },
@@ -49,24 +55,24 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          {LIGHTSPEED_ORDER_URL ? (
+          {TAKEAWAY_ENABLED ? (
             <a className="nav-reserve" href={LIGHTSPEED_ORDER_URL} target="_blank" rel="noreferrer">
               Bestel om af te halen <span className="external-link-icon" aria-hidden="true">↗</span>
             </a>
-          ) : (
+          ) : !HIDE_DISABLED_ACTIONS ? (
             <span className="nav-reserve" aria-disabled="true">
               Bestel om af te halen <span className="external-link-icon" aria-hidden="true">↗</span>
             </span>
-          )}
-          {LIGHTSPEED_RESERVATION_URL ? (
+          ) : null}
+          {RESERVATIONS_ENABLED ? (
             <a className="nav-reserve" href={LIGHTSPEED_RESERVATION_URL} target="_blank" rel="noreferrer">
               Reserveer een tafel <span className="external-link-icon" aria-hidden="true">↗</span>
             </a>
-          ) : (
+          ) : !HIDE_DISABLED_ACTIONS ? (
             <span className="nav-reserve" aria-disabled="true">
               Reserveer een tafel <span className="external-link-icon" aria-hidden="true">↗</span>
             </span>
-          )}
+          ) : null}
         </nav>
       </div>
     </header>

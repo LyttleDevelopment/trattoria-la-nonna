@@ -5,6 +5,7 @@ export type MenuItem = {
   dineInPrice: number;
   takeawayPrice?: number;
   takeawayRestricted?: boolean;
+  priceUnit?: string;
   category: string;
   image?: string;
 };
@@ -48,8 +49,8 @@ export const menuSections: MenuSection[] = [
       },
       {
         id: "antipasto-della-nonna",
-        name: "Antipasto Della Nonna",
-        description: "Prosciutto, mortadella, bresaola?, saltufo, olijven en kazen.",
+        name: "Antipasto Della Nonna (2 personen)",
+        description: "Prosciutto, mortadella, bresaola, saltufo, olijven en pecorino.",
         dineInPrice: 24,
         takeawayPrice: 22,
         category: "Aperitiefhapjes",
@@ -89,9 +90,9 @@ export const menuSections: MenuSection[] = [
       {
         id: "arancini-siciliani",
         name: "Arancini siciliani",
-        description: "Krokante risottoballetjes, warme tomatensaus, parmezaan en basilicum.",
-        dineInPrice: 14.5,
-        takeawayPrice: 12.5,
+        description: "Krokante risottoballetjes, warme tomatensaus, pecorino Romano en basilicum.",
+        dineInPrice: 15.5,
+        takeawayPrice: 13.5,
         category: "Voorgerechten",
         image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b7?auto=format&fit=crop&w=480&q=85",
       },
@@ -108,6 +109,14 @@ export const menuSections: MenuSection[] = [
         takeawayPrice: 16.5,
         category: "Pasta",
         image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=480&q=85",
+      },
+      {
+        id: "rigatone-all-amatriciana",
+        name: "Rigatone all'amatriciana",
+        description: "Pittige tomatensaus, guanciale en pecorino Romano.",
+        dineInPrice: 18.5,
+        takeawayPrice: 16.5,
+        category: "Pasta",
       },
       {
         id: "spaghetti-vongole",
@@ -137,11 +146,11 @@ export const menuSections: MenuSection[] = [
         image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=480&q=85",
       },
       {
-        id: "aglio-e-olio-scampi",
-        name: "Aglio e olio scampi",
-        description: "Scampi, chilipeper, knoflook en peterselie.",
-        dineInPrice: 20.5,
-        takeawayPrice: 18.5,
+        id: "spaghetti-scampi-aglio-olio",
+        name: "Spaghetti scampi aglio & olio",
+        description: "Scampi, chili, knoflook, peterselie en linguini.",
+        dineInPrice: 21.5,
+        takeawayPrice: 19.5,
         category: "Pasta",
         image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=480&q=85",
       },
@@ -158,16 +167,16 @@ export const menuSections: MenuSection[] = [
         id: "rigatone-tartufo",
         name: "Rigatone al tartufo",
         description: "Rigatoni, truffelroom, champignons en parmezaan.",
-        dineInPrice: 21.5,
-        takeawayPrice: 19.5,
+        dineInPrice: 20.5,
+        takeawayPrice: 18.5,
         category: "Pasta",
         image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=480&q=85",
       },
       {
         id: "lasagne-della-nonna",
         name: "Lasagne della nonna",
-        dineInPrice: 20.5,
-        takeawayPrice: 18.5,
+        dineInPrice: 19.5,
+        takeawayPrice: 17.5,
         category: "Pasta",
         image: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=480&q=85",
       },
@@ -210,21 +219,47 @@ export const menuSections: MenuSection[] = [
         category: "Hoofdgerechten",
       },
       {
-        id: "branzino-mediterranea",
-        name: "Branzino alla mediterranea",
-        description: "Zeebaars, olijven, kappertjes, citroen, geroosterde krieltjes en kerstomaatjes.",
-        dineInPrice: 27.5,
+        id: "salmone-al-forno",
+        name: "Salmone al forno",
+        description: "Geroosterde tomaatjes, olijven en kappertjes.",
+        dineInPrice: 26.5,
         takeawayRestricted: true,
         category: "Hoofdgerechten",
       },
       {
-        id: "ossocuco-alla-milanese",
-        name: "Ossocuco alla milanese",
+        id: "ossobuco-alla-milanese",
+        name: "Ossobuco alla milanese",
         description: "Langzaam gegaarde kalfsschenkel, gremolata en saffraanrisotto.",
         dineInPrice: 26.5,
         takeawayPrice: 24.5,
         category: "Hoofdgerechten",
         image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=480&q=85",
+      },
+    ],
+  },
+  {
+    name: "Kids menu",
+    items: [
+      {
+        id: "kids-balletjes-tomatensaus",
+        name: "Balletjes in tomatensaus met frietjes",
+        dineInPrice: 10,
+        takeawayPrice: 8,
+        category: "Kids menu",
+      },
+      {
+        id: "kids-spaghetti-bolognese",
+        name: "Spaghetti bolognese",
+        dineInPrice: 10,
+        takeawayPrice: 8,
+        category: "Kids menu",
+      },
+      {
+        id: "kids-kip-frietjes-appelmoes",
+        name: "Gepaneerde kip met frietjes en appelmoes",
+        dineInPrice: 10,
+        takeawayPrice: 8,
+        category: "Kids menu",
       },
     ],
   },
@@ -251,8 +286,16 @@ export const menuSections: MenuSection[] = [
       },
       {
         id: "limone-ripieno",
-        name: "Limone ripieno – Gevulde citroen",
+        name: "Limone ripieno – Gevulde citroen met citroensorbet",
         dineInPrice: 6.5,
+        takeawayRestricted: true,
+        category: "Desserts",
+      },
+      {
+        id: "gelato",
+        name: "Gelato – wisselend aanbod",
+        dineInPrice: 2.5,
+        priceUnit: "bol",
         takeawayRestricted: true,
         category: "Desserts",
       },
@@ -264,23 +307,45 @@ export const menuSections: MenuSection[] = [
         takeawayRestricted: true,
         category: "Desserts",
       },
+      {
+        id: "kinderijsje",
+        name: "Kinderijsje",
+        dineInPrice: 3.5,
+        takeawayRestricted: true,
+        category: "Desserts",
+      },
     ],
   },
 ];
 
-export const drinkSections = [
+export type DrinkItem = {
+  id: string;
+  name: string;
+  price: number;
+  priceUnit?: string;
+  additionalPrice?: number;
+  additionalPriceUnit?: string;
+};
+
+export type DrinkSection = {
+  name: string;
+  items: DrinkItem[];
+  note?: string;
+};
+
+export const drinkSections: DrinkSection[] = [
   {
     name: "Aperitieven",
     items: [
-      { id: "prosecco", name: "Prosecco", price: 9 },
+      { id: "prosecco", name: "Prosecco", price: 9, priceUnit: "glas", additionalPrice: 40, additionalPriceUnit: "fles" },
       { id: "picon-vin-blanc", name: "Picon vin blanc", price: 8 },
       { id: "aperol-spritz", name: "Aperol spritz", price: 9 },
       { id: "limoncello-spritz", name: "Limoncello spritz", price: 9 },
       { id: "gin-mare-tonic", name: "Gin mare – tonic", price: 13 },
-      { id: "negroni", name: "Negroni", price: 11 },
-      { id: "americano", name: "Americano", price: 10 },
+      { id: "negroni", name: "Negroni", price: 12 },
+      { id: "americano", name: "Americano", price: 11 },
       { id: "martini", name: "Martini bianco/rosso", price: 7.5 },
-      { id: "alcohol-free-cocktail", name: "Alcoholvrije cocktail: spritz of mojito", price: 7 },
+      { id: "alcohol-free-cocktail", name: "Alcoholvrije cocktails: spritz of mojito", price: 7 },
     ],
   },
   {
@@ -288,24 +353,35 @@ export const drinkSections = [
     items: [
       { id: "coca-cola", name: "Coca cola/zero", price: 3 },
       { id: "sprite", name: "Sprite", price: 3 },
-      { id: "fuze-tea", name: "Fuze tea", price: 3.2 },
-      { id: "san-pellegrino", name: "San Pellegrino", price: 4 },
-      { id: "plat-water", name: "Plat water", price: 3 },
-      { id: "bruiswater", name: "Bruiswater", price: 3 },
-      { id: "karaf-water", name: "Karaf water", price: 4 },
+      { id: "fuze-tea", name: "Fuze tea", price: 3 },
+      { id: "san-pellegrino", name: "San Pellegrino 33cl", price: 4 },
+      { id: "plat-water", name: "Plat water 0,5l", price: 4.5 },
+      { id: "bruiswater", name: "Bruiswater 0,5l", price: 4.5 },
     ],
   },
   {
     name: "Bieren",
     items: [
-      { id: "stella-artois", name: "Stella Artois", price: 3.5 },
-      { id: "duvel", name: "Duvel", price: 4.5 },
+      { id: "stella-artois", name: "Stella Artois + NA", price: 3.5 },
+      { id: "duvel", name: "Duvel", price: 5 },
     ],
   },
   {
-    name: "Wijnen",
+    name: "Witte wijnen",
+    items: [
+      { id: "bine-gavi", name: "Biné Gavi", price: 42, priceUnit: "fles" },
+      { id: "cavescovado-pinot-grigio", name: "Ca’vescovado Pinot Grigio", price: 6, priceUnit: "glas", additionalPrice: 25, additionalPriceUnit: "fles" },
+      { id: "mosole-ribolla-gialla", name: "Mosole Ribolla Gialla", price: 42, priceUnit: "fles" },
+    ],
+  },
+  {
+    name: "Rode wijnen",
     note: "Nog te bespreken…",
-    items: [],
+    items: [
+      { id: "cavescovado-montepulciano", name: "Ca’vescovado Montepulciano d’abruzzo", price: 6, priceUnit: "glas", additionalPrice: 25, additionalPriceUnit: "fles" },
+      { id: "chianti-classico", name: "Chianti classico", price: 55, priceUnit: "fles" },
+      { id: "amami-primitivo", name: "Amami Primitivo", price: 35, priceUnit: "fles" },
+    ],
   },
   {
     name: "Koffie",
@@ -314,7 +390,7 @@ export const drinkSections = [
       { id: "koffie-deca", name: "Koffie/deca", price: 3.5 },
       { id: "cappuccino", name: "Cappuccino", price: 4.5 },
       { id: "latte-macchiato", name: "Latte Macchiato", price: 6.5 },
-      { id: "italian-coffee", name: "Italiaanse koffie", price: 9.5 },
+      { id: "italian-coffee", name: "Italian coffee", price: 9.5 },
     ],
   },
   {
@@ -323,7 +399,6 @@ export const drinkSections = [
       { id: "limoncello", name: "Limoncello", price: 6 },
       { id: "amaretto", name: "Amaretto", price: 6 },
       { id: "sambuca", name: "Sambuca", price: 6 },
-      { id: "grappa", name: "Grappa", price: 6.5 },
       { id: "licor-43", name: "Licor 43", price: 6.5 },
     ],
   },
