@@ -1045,7 +1045,7 @@ h2 {
   display: none;
 }
 
-.opening-notice {
+.site-notice-modal {
   position: fixed;
   width: min(calc(100% - 2rem), 34rem);
   max-height: min(90vh, 42rem);
@@ -1059,15 +1059,15 @@ h2 {
   text-align: center;
 }
 
-.opening-notice::backdrop {
+.site-notice-modal::backdrop {
   background: rgba(35, 32, 21, 0.58);
 }
 
-.opening-notice .eyebrow {
+.site-notice-modal .eyebrow {
   margin-bottom: 0.5rem;
 }
 
-.opening-notice h2 {
+.site-notice-modal h2 {
   margin: 0 auto 1rem;
   color: var(--olive-dark);
   font-family: var(--serif);
@@ -1075,13 +1075,13 @@ h2 {
   line-height: 1.15;
 }
 
-.opening-notice > p:not(.eyebrow) {
+.site-notice-modal > p:not(.eyebrow) {
   margin: 0 auto 1.5rem;
   max-width: 26rem;
   color: var(--muted);
 }
 
-.opening-notice-close {
+.site-notice-modal-close {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;

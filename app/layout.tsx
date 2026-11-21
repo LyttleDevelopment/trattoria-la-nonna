@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MotionEffects from "@/components/MotionEffects";
-import OpeningNotice from "@/components/OpeningNotice";
+import SiteNoticeModal from "@/components/SiteNoticeModal";
 import UnderConstruction from "@/components/UnderConstruction";
 import { SITE_NOTICE } from "@/data/site-config";
 import "./globals.css";
@@ -35,7 +35,7 @@ export default function RootLayout({
             {children}
             <Footer />
             <MotionEffects />
-            <OpeningNotice />
+            <SiteNoticeModal />
           </>
         )}
       </body>

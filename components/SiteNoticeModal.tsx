@@ -1,21 +1,21 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { OPENING_NOTICE } from "@/data/site-config";
+import { SITE_POPUP_NOTICE } from "@/data/site-config";
 
-export default function OpeningNotice() {
+export default function SiteNoticeModal() {
   const [isWithinWindow, setIsWithinWindow] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const shouldShow = OPENING_NOTICE.enabled && isWithinWindow && !isDismissed;
+  const shouldShow = SITE_POPUP_NOTICE.enabled && isWithinWindow && !isDismissed;
 
   useEffect(() => {
-    if (!OPENING_NOTICE.enabled) return;
+    if (!SITE_POPUP_NOTICE.enabled) return;
 
-    const startsAt = Date.parse(OPENING_NOTICE.startsAt);
-    const endsAt = Date.parse(OPENING_NOTICE.endsAt);
+    const startsAt = Date.parse(SITE_POPUP_NOTICE.startsAt);
+    const endsAt = Date.parse(SITE_POPUP_NOTICE.endsAt);
     if (!Number.isFinite(startsAt) || !Number.isFinite(endsAt) || startsAt >= endsAt) {
-      console.error("De openingsmelding heeft een ongeldige datumconfiguratie.");
+      console.error("De pop-upmelding heeft een ongeldige datumconfiguratie.");
       return;
     }
 
@@ -50,32 +50,28 @@ export default function OpeningNotice() {
 
   return (
     <dialog
-      className="opening-notice"
+      className="site-notice-modal"
       ref={dialogRef}
-      aria-labelledby="opening-notice-title"
-      aria-describedby="opening-notice-copy"
+      aria-labelledby="site-notice-title"
+      aria-describedby="site-notice-copy"
       onClose={() => setIsDismissed(true)}
       onClick={(event) => {
         if (event.target === event.currentTarget) closeNotice();
       }}
     >
       <button
-        className="opening-notice-close"
+        className="site-notice-modal-close"
         type="button"
-        aria-label="Melding sluiten"
+        aria-label={SITE_POPUP_NOTICE.closeLabel}
         onClick={closeNotice}
       >
         <span aria-hidden="true">×</span>
       </button>
-      <p className="eyebrow">La Nonna Cucina</p>
-      <h2 id="opening-notice-title">
-        Onze deuren openen op {OPENING_NOTICE.openingDate}
-      </h2>
-      <p id="opening-notice-copy">
-        We kijken ernaar uit je vanaf dan te verwelkomen in onze trattoria.
-      </p>
+      <p className="eyebrow">{SITE_POPUP_NOTICE.eyebrow}</p>
+      <h2 id="site-notice-title">{SITE_POPUP_NOTICE.title}</h2>
+      <p id="site-notice-copy">{SITE_POPUP_NOTICE.body}</p>
       <button className="button button-primary" type="button" onClick={closeNotice}>
-        Begrepen
+        {SITE_POPUP_NOTICE.actionText}
       </button>
     </dialog>
   );

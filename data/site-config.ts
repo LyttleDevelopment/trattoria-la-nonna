@@ -5,13 +5,17 @@ export const SITE_NOTICE: SiteNotice | null = null;
 // export const SITE_NOTICE: SiteNotice | null = "maintenance";
 // export const SITE_NOTICE: SiteNotice | null = "grand-opening";
 
-export const OPENING_NOTICE = {
+export const SITE_POPUP_NOTICE = {
   enabled: true,
   // Use the Brussels offset: CET (+01:00) in winter and CEST (+02:00) in summer.
   startsAt: "2026-11-01T00:00:00+01:00",
   // The end is exclusive.
   endsAt: "2026-12-04T00:00:00+01:00",
-  openingDate: "4 december 2026",
+  eyebrow: "La Nonna Cucina",
+  title: "Onze deuren openen op 4 december 2026",
+  body: "We kijken ernaar uit je vanaf dan te verwelkomen in onze trattoria.",
+  closeLabel: "Melding sluiten",
+  actionText: "Begrepen",
 } as const;
 
 export const LIGHTSPEED_RESERVATION_URL =
