@@ -1045,6 +1045,60 @@ h2 {
   display: none;
 }
 
+.opening-notice {
+  position: fixed;
+  width: min(calc(100% - 2rem), 34rem);
+  max-height: min(90vh, 42rem);
+  overflow-y: auto;
+  padding: clamp(1.75rem, 5vw, 2.75rem);
+  border: 1px solid rgba(191, 138, 67, 0.8);
+  border-radius: 6px;
+  background: var(--white);
+  box-shadow: 0 16px 48px rgba(35, 32, 21, 0.28);
+  color: var(--ink);
+  text-align: center;
+}
+
+.opening-notice::backdrop {
+  background: rgba(35, 32, 21, 0.58);
+}
+
+.opening-notice .eyebrow {
+  margin-bottom: 0.5rem;
+}
+
+.opening-notice h2 {
+  margin: 0 auto 1rem;
+  color: var(--olive-dark);
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.opening-notice > p:not(.eyebrow) {
+  margin: 0 auto 1.5rem;
+  max-width: 26rem;
+  color: var(--muted);
+}
+
+.opening-notice-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--olive);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--olive-dark);
+  cursor: pointer;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
 .shortlist-backdrop {
   position: fixed;
   z-index: 13;

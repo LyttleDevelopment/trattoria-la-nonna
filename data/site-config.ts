@@ -5,6 +5,15 @@ export const SITE_NOTICE: SiteNotice | null = null;
 // export const SITE_NOTICE: SiteNotice | null = "maintenance";
 // export const SITE_NOTICE: SiteNotice | null = "grand-opening";
 
+export const OPENING_NOTICE = {
+  enabled: true,
+  // Use the Brussels offset: CET (+01:00) in winter and CEST (+02:00) in summer.
+  startsAt: "2026-11-01T00:00:00+01:00",
+  // The end is exclusive.
+  endsAt: "2026-12-04T00:00:00+01:00",
+  openingDate: "4 december 2026",
+} as const;
+
 export const LIGHTSPEED_RESERVATION_URL =
   "https://mylightspeed.app/reservation/d7eb4362-04fd-4f54-8e82-c58fb0ecd5a5/reservation";
 export const LIGHTSPEED_ORDER_URL = "https://mylightspeed.app/KFKCQTVB/C-ordering";
