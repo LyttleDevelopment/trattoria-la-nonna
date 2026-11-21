@@ -11,7 +11,7 @@ export const SITE_POPUP_NOTICE = {
   startsAt: "2026-11-01T00:00:00+01:00",
   // The end is exclusive.
   endsAt: "2026-12-04T00:00:00+01:00",
-  eyebrow: "La Nonna Cucina",
+  eyebrow: "La Nonna",
   title: "Onze deuren openen op 4 december 2026",
   body: "We kijken ernaar uit je vanaf dan te verwelkomen in onze trattoria.",
   closeLabel: "Melding sluiten",

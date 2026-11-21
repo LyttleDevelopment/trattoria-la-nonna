@@ -3,7 +3,7 @@ import MenuExperience from '@/components/MenuExperience';
 
 export const metadata: Metadata = {
     title: 'Menukaart',
-    description: 'De menukaart met gerechten en dranken van La Nonna Cucina.',
+    description: 'De menukaart met gerechten en dranken van La Nonna.',
 };
 
 export default function MenuPage() {

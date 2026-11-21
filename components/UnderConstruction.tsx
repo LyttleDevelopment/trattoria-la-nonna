@@ -31,7 +31,7 @@ export default function UnderConstruction({ noticeType }: { noticeType: SiteNoti
           height={100}
           priority
         />
-        <p className="eyebrow">La Nonna Cucina</p>
+        <p className="eyebrow">La Nonna</p>
         <h1 id="maintenance-title">{content.title}</h1>
         <p className="maintenance-copy">{content.copy}</p>
         <address className="maintenance-contact">

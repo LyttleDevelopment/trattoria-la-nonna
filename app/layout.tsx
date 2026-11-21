@@ -9,8 +9,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "La Nonna Cucina | Italiaans restaurant in Lokeren",
-    template: "%s | La Nonna Cucina",
+    default: "La Nonna | Italiaans restaurant in Lokeren",
+    template: "%s | La Nonna",
   },
   description:
     "Een warme Italiaanse trattoria met handgemaakte pasta en mediterrane gerechten in Lokeren, België.",

@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <Link className="brand" href="/" aria-label="La Nonna Cucina startpagina" onClick={() => setMenuOpen(false)}>
+        <Link className="brand" href="/" aria-label="La Nonna startpagina" onClick={() => setMenuOpen(false)}>
           <Image className="brand-logo" src="/logo.svg" alt="" width={78} height={78} priority />
         </Link>
         <button
